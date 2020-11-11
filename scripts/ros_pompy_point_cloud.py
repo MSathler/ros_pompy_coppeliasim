@@ -9,7 +9,16 @@ from geometry_msgs.msg import Point32, Pose
 class pompy_point_cloud(object):
     
     
-    def __init__(self, wind_model, plume_model, conc_array, array_gen, use_pose_coppelia = True, node_name = 'plume_simulator_server', dt = 0.01, topic_publisher = 'point_pompy',topic_subscriber = '/dummy/pose',frame = 'world'):
+    def __init__(self,  wind_model, 
+			plume_model,
+			conc_array,
+			array_gen,
+			use_pose_coppelia = True,
+			node_name = 'plume_simulator_server', 
+			dt = 0.01,
+			topic_publisher = 'point_pompy',
+			topic_subscriber = '/dummy/pose',
+			frame = 'world'):
         
         self._topic_publisher = topic_publisher
         self._topic_subscriber = topic_subscriber
