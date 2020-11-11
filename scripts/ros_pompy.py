@@ -74,9 +74,6 @@ if __name__ == '__main__':
     
         wind_model.update(dt)
 
-    # Iniciate function to ros
-    rospy.init_node('plume_simulator_server')
-
     try:
         pb = pompy_point_cloud(wind_model=wind_model,plume_model=plume_model, conc_array = conc_array, array_gen = array_gen)
         rospy.spin()
