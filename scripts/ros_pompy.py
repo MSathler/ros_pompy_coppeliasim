@@ -6,6 +6,7 @@ from pompy import models, processors
 from ros_pompy_point_cloud import pompy_point_cloud
 
 if __name__ == '__main__':
+
     # Seed random number generator
     seed = 20180517
     rng = np.random.RandomState(seed)
@@ -75,7 +76,10 @@ if __name__ == '__main__':
         wind_model.update(dt)
 
     try:
-        pb = pompy_point_cloud(wind_model=wind_model,plume_model=plume_model, conc_array = conc_array, array_gen = array_gen)
-        rospy.spin()
+        pb = pompy_point_cloud( wind_model=wind_model,
+                                plume_model=plume_model, 
+                                conc_array = conc_array, 
+                                array_gen = array_gen
+                                ,use_pose_coppelia=True)
     except rospy.ROSInterruptException:
         rospy.loginfo('caught exception')

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+
+
+    <node pkg = "ros_pompy_coppeliasim" name = "ros_pompy" type = "ros_pompy.py" args=""/>
+    <node pkg = "ros_pompy_coppeliasim" name = "sensor_read" type = "sensor_read.py" args=""/>
+
+    
+</launch>
+

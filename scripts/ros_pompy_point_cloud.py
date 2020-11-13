@@ -30,7 +30,7 @@ class pompy_point_cloud(object):
         self._array_gen = array_gen
         self._plume_model = plume_model
         self._use_pose_coppelia = use_pose_coppelia
-
+        #self.rate = rospy.Rate(1)
         self.ros()
 
 
@@ -40,14 +40,16 @@ class pompy_point_cloud(object):
         self._pc_publisher = rospy.Publisher(str(self._topic_publisher),PointCloud, queue_size= 100)
 
         if (self._use_pose_coppelia == True):
-            self._pose_subscriber = rospy.Subscriber(str(self._topic_subscriber),Pose,self.pose_callback)
             rospy.loginfo("Utilized dummy position with Coppelia Pose")
+            while not rospy.is_shutdown():
+                self._pose_subscriber = rospy.Subscriber(str(self._topic_subscriber),Pose,self.pose_callback)
+                rospy.Rate(1).sleep()
         else:
             rospy.loginfo("Without using the pose with Coppelia")
             while not rospy.is_shutdown():
                 self.without_coppelia() 
-
-        rospy.spin()
+                rospy.Rate(1).sleep()
+        #rospy.spin()
 
     def pose_callback(self, pose):
 
@@ -97,6 +99,7 @@ class pompy_point_cloud(object):
         y = []
         z = []
         inten = []
+        self.pc_msg = PointCloud()
 
     def without_coppelia(self):
         for i in range(10):
