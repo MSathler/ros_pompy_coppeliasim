@@ -42,7 +42,8 @@ Then:
 ![rviz](https://user-images.githubusercontent.com/51409770/99056416-09c35980-2579-11eb-8083-e73a60de5a8e.jpeg)
 ![coppeliasim](https://user-images.githubusercontent.com/51409770/99056413-08922c80-2579-11eb-8e2b-b7fa872212be.jpeg)
 
-### Sensor Reads
+![coppelia_pompy](https://user-images.githubusercontent.com/51409770/99057666-e26d8c00-257a-11eb-9f62-ecbc1bc0f2d2.png)
+![gas_reads](https://user-images.githubusercontent.com/51409770/99057712-ef8a7b00-257a-11eb-9806-33f55dbee320.png)
 
-![simulated_sensor2](https://user-images.githubusercontent.com/51409770/99055027-36c33c80-2578-11eb-9c80-d96bbe043400.png)
+
 
