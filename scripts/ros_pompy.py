@@ -5,6 +5,9 @@ import rospy
 from pompy import models, processors
 from ros_pompy_point_cloud import pompy_point_cloud
 
+__author__ = 'Mauricio Sathler'
+__license__ = 'MIT'
+
 if __name__ == '__main__':
 
     # Seed random number generator
@@ -44,7 +47,7 @@ if __name__ == '__main__':
         'puff_spread_rate': 0.001,
         'init_num_puffs': 10,
         'max_num_puffs': 10000,
-        'model_z_disp': False,
+        'model_z_disp': True,
     }
 
     # Create plume model object
@@ -56,8 +59,8 @@ if __name__ == '__main__':
         'array_z': 0.,
         'n_x': 500,
         'n_y': 250,
-        'puff_mol_amount': 8.3e8
-    }
+        'puff_mol_amount': 1000
+    }#8.3e8
 
     # Create concentration array generator object
     array_gen = processors.ConcentrationArrayGenerator(

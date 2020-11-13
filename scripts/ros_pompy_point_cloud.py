@@ -5,6 +5,8 @@ import geometry_msgs
 import std_msgs
 from geometry_msgs.msg import Point32, Pose
 
+__author__ = 'Mauricio Sathler'
+__license__ = 'MIT'
 
 class pompy_point_cloud(object):
     

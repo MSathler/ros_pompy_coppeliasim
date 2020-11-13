@@ -3,9 +3,12 @@ from sensor_msgs.msg import PointCloud
 from geometry_msgs.msg import Pose
 from std_msgs.msg import Float32
 
+__author__ = 'Mauricio Sathler'
+__license__ = 'MIT'
+
 class simSensor():
     def __init__(self, 
-		 sensor_dimention = 0.1,
+		 sensor_dimention = 0.05,
 		 node_name = "simSensor",
 		 pose_subscriber = "/gas_sensor/pose",
 		 pointcloud_subscriber = "/point_pompy",
@@ -21,7 +24,7 @@ class simSensor():
         self._read = 0
         self._sensor_x = 0
         self._sensor_y = 0
-        self._sensor_dimention = sensor_dimention # default 10cm
+        self._sensor_dimention = sensor_dimention # default 5cm
 	self.pose_subscriber = pose_subscriber
 	self.pointcloud_subscriber = pointcloud_subscriber
 	self.sensorRead_publisher = sensorRead_publisher
@@ -41,11 +44,11 @@ class simSensor():
 
         for i in range(len(self._intensity)):
 
-            if (self._sensor_x >= self._points[i].x - self._sensor_dimention and self._sensor_x <= self._points[i].x + self._sensor_dimention):
+            if ((self._points[i].x >= (self._sensor_x - self._sensor_dimention)) and (self._points[i].x <= (self._sensor_x + self._sensor_dimention))):
                 
                 for j in range(len(self._intensity)): 
 
-                    if (self._sensor_y >= self._points[j].y - self._sensor_dimention and self._sensor_y <= self._points[j].y + self._sensor_dimention):
+                    if ((self._points[j].y >= (self._sensor_y - self._sensor_dimention)) and (self._points[j].y <= (self._sensor_y + self._sensor_dimention))):
                         
                         self._xy_reads.append(self._intensity[i])
                         self._pos_reads.append(i)
