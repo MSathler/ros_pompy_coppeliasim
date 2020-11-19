@@ -4,6 +4,8 @@ from pompy import models, processors
 import geometry_msgs
 import std_msgs
 from geometry_msgs.msg import Point32, Pose
+import cython_concarray
+
 
 __author__ = 'Mauricio Sathler'
 __license__ = 'MIT'
@@ -63,27 +65,27 @@ class pompy_point_cloud(object):
         self._conc_array = self._array_gen.generate_single_array(self._plume_model.puff_array)
         
         # Initiation of variables temporary variables
-        x =[]
-        y = []
-        z = []
-        inten = []
+        #x =[]
+        #y = []
+        #z = []
+        #inten = []
 
         # Creation of Point Cloud object
         self.pc_msg = PointCloud()
         self.pc_msg.header.stamp = rospy.Time.now()
         self.pc_msg.header.frame_id = 'world'
         
+        x,y,z,inten = cython_concarray.cython_pc(self._conc_array,pose)
+        #for i in range(self._conc_array.T.shape[0]):
 
-        for i in range(self._conc_array.T.shape[0]):
+        #    for j in range(self._conc_array.T.shape[1]):
 
-            for j in range(self._conc_array.T.shape[1]):
+        #        if (self._conc_array.T[i][j] != 0):
 
-                if (self._conc_array.T[i][j] != 0):
-
-                    x.append((i*0.01) + pose.position.x)
-                    y.append((j*0.01) + pose.position.y)
-                    z.append(pose.position.z)
-                    inten.append(self._conc_array.T[i][j]*0.001)
+        #            x.append((i*0.01) + pose.position.x)
+        #            y.append((j*0.01) + pose.position.y)
+        #            z.append(pose.position.z)
+        #            inten.append(self._conc_array.T[i][j]*0.001)
 
 
                     

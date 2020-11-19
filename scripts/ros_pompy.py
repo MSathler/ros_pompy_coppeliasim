@@ -46,8 +46,8 @@ if __name__ == '__main__':
         'puff_init_rad': 0.001**0.5,
         'puff_spread_rate': 0.001,
         'init_num_puffs': 10,
-        'max_num_puffs': 10000,
-        'model_z_disp': True,
+        'max_num_puffs': 1000,
+        'model_z_disp': False,
     }
 
     # Create plume model object
@@ -58,7 +58,7 @@ if __name__ == '__main__':
     array_gen_params = {
         'array_z': 0.,
         'n_x': 500,
-        'n_y': 250,
+        'n_y': 500,
         'puff_mol_amount': 1000
     }#8.3e8
 
