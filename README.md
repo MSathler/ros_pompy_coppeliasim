@@ -1,6 +1,6 @@
 # ros_pompy_coppeliasim
 
-This is a package that adapts the pompy library to the ROS (kinetic) and Coppeliasim (4.1.0) simulator, including a Python script that simulates the gas sensor in Coppeliasim.
+This package adapts the pompy library to the ROS (kinetic) and Coppeliasim (4.1.0) simulator, including a Python script that simulates the gas sensor in Coppeliasim.
 
 ## Install Dependencies
 
