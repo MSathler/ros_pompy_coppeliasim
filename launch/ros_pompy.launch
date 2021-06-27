@@ -1,10 +1,23 @@
 <?xml version="1.0"?>
 <launch>
 
+    <!--<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"></include>
+    <node pkg = "tf2_web_republisher" name = "tf2_web_republisher" type = "tf2_web_republisher.py" args=""/>
 
-    <node pkg = "ros_pompy_coppeliasim" name = "ros_pompy" type = "ros_pompy.py" args=""/>
-    <node pkg = "ros_pompy_coppeliasim" name = "sensor_read" type = "sensor_read.py" args=""/>
+    <node pkg = "ros_pompy_coppeliasim" name = "pc_radial" type = "pc_radial.py" args=""/>
+    <node pkg = "ros_pompy_coppeliasim" name = "sensor_read" type = "sensor_read.py" args=""/>-->
+    <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find ros_pompy_coppeliasim)/urdf/pioneer3dx.xacro'"/>
 
-    
+    <!--GUI used to send fake joint values -->
+
+        <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+            <param name="use_gui" value="false"/>
+            <!-- <remap from="joint_states" to="espeleo_wheels/joint_states"/> -->
+            <!-- <param name="tf_prefix" value="espeleo_robo"/> -->
+        </node>
+
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false">
+    </node>
 </launch>
 

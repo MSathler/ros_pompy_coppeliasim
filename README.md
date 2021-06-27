@@ -27,6 +27,7 @@ To run the Ros_Pompy_CoppeliaSim simulation, first, clone this repository and ot
 
 ## How to run
 
+### With CoppeliaSim
       $ roscore
       $ coppelia
 
@@ -37,7 +38,16 @@ Then:
       $ roslaunch ros_pompy_coppeliasim ros_pompy.launch
       $ rosrun coppeliasim_remote_pc pc_coppelia.py
       
-      
+### Without CoppeliaSim
+
+      $ roscore
+      $ rosrun coppeliasim_remote_pc pc_coppelia.py
+
+Then open Rviz and display a PointCloud1.
+
+![image](https://user-images.githubusercontent.com/51409770/123549195-488bd580-d73e-11eb-8e00-312e3f6944a8.png)
+
+
 ![pompy](https://user-images.githubusercontent.com/51409770/99056417-0a5bf000-2579-11eb-9a98-98a2aac2451d.jpeg)
 ![rviz](https://user-images.githubusercontent.com/51409770/99056416-09c35980-2579-11eb-8083-e73a60de5a8e.jpeg)
 ![coppeliasim](https://user-images.githubusercontent.com/51409770/99056413-08922c80-2579-11eb-8e2b-b7fa872212be.jpeg)

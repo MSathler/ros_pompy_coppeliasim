@@ -15,7 +15,7 @@ if __name__ == '__main__':
     rng = np.random.RandomState(seed)
 
     # Define wind model simulation region
-    wind_region = models.Rectangle(x_min=0., x_max=100., y_min=-50., y_max=50.)
+    wind_region = models.Rectangle(x_min=-50., x_max=100., y_min=-50., y_max=50.)
 
     # Define wind model parameters
     wind_model_params = { 
@@ -25,7 +25,7 @@ if __name__ == '__main__':
         'v_av': 0.,
         'k_x': 10.,
         'k_y': 10.,
-        'noise_gain': 20.,
+        'noise_gain': 0.,
         'noise_damp': 0.1,
         'noise_bandwidth': 0.2,
         'use_original_noise_updates': True
@@ -36,17 +36,17 @@ if __name__ == '__main__':
 
     # Define plume simulation region
     # This is a subset of the wind simulation region
-    sim_region = models.Rectangle(x_min=0., x_max=50., y_min=-12.5, y_max=12.5)
+    sim_region = models.Rectangle(x_min=0., x_max=50., y_min=-25.0, y_max=5.5)
 
     # Define plume model parameters
     plume_model_params = {
         'source_pos': (0., -12., 0.),
         'centre_rel_diff_scale': 2.,
-        'puff_release_rate': 10,
+        'puff_release_rate': 20,
         'puff_init_rad': 0.001**0.5,
-        'puff_spread_rate': 0.001,
+        'puff_spread_rate': 0.009,
         'init_num_puffs': 10,
-        'max_num_puffs': 1000,
+        'max_num_puffs': 10000,
         'model_z_disp': False,
     }
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
         'array_z': 0.,
         'n_x': 500,
         'n_y': 500,
-        'puff_mol_amount': 1000
+        'puff_mol_amount': 8.3e8
     }#8.3e8
 
     # Create concentration array generator object
@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
     # Run wind model forward to equilibrate
     
-    for k in range(2000):
+    for k in range(20):
     
         wind_model.update(dt)
 
@@ -83,6 +83,6 @@ if __name__ == '__main__':
                                 plume_model=plume_model, 
                                 conc_array = conc_array, 
                                 array_gen = array_gen
-                                ,use_pose_coppelia=True)
+                                ,use_pose_coppelia=False)
     except rospy.ROSInterruptException:
         rospy.loginfo('caught exception')
